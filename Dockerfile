@@ -9,7 +9,9 @@ RUN <<EOF
         zlib1g-dev \
         libsdl2-dev \
         libasound2-dev \
-        git
+        git \
+        wget \
+        unzip
 EOF
 
 ARG JULIUS_VERSION=4ba475bd430faa5919e13e2020d6edda1491fb66
@@ -26,3 +28,20 @@ RUN <<EOF
 
     make install
 EOF
+
+ARG ENVR_URL=https://jaist.dl.sourceforge.net/project/juliusmodels/ENVR-v5.4.Dnn.Bin.zip
+RUN <<EOF
+    cd /opt
+    wget -O "ENVR.zip" "${ENVR_URL}"
+
+    TMP_DEST=$(mktemp -d)
+    unzip -d "$TMP_DEST" ENVR.zip
+    rm ENVR.zip
+
+    mkdir /opt/ENVR
+    mv "$TMP_DEST"/*/* /opt/ENVR/
+
+    rm -rf "$TMP_DEST"
+EOF
+
+WORKDIR /opt/ENVR
