@@ -23,9 +23,6 @@ RUN <<EOF
     cd /opt/julius
     ./configure --enable-words-int
     make -j$(nproc)
-EOF
 
-RUN <<EOF
-    cd /opt/julius
     make install
 EOF
