@@ -8,7 +8,8 @@ RUN <<EOF
         build-essential \
         zlib1g-dev \
         libsdl2-dev \
-        libasound2-dev
+        libasound2-dev \
+        git
 EOF
 
 ARG JULIUS_VERSION=4ba475bd430faa5919e13e2020d6edda1491fb66
