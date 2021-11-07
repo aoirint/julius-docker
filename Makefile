@@ -5,7 +5,7 @@ build:
 CMD=bash
 .PHONY: run
 run:
-	docker run --rm -it aoirint/julius $(CMD)
+	docker run --rm -it -v "$(PWD)/mount:/mount" aoirint/julius $(CMD)
 
 .PHONY: example
 example:
