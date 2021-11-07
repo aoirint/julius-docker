@@ -2,6 +2,7 @@
 build:
 	docker buildx build . -t aoirint/julius
 
+CMD=bash
 .PHONY: run
 run:
 	docker run --rm -it aoirint/julius $(CMD)
